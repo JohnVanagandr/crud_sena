@@ -1,0 +1,54 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+form{
+  max-width: 450px;
+  width: 450px;
+  margin: 0 auto;
+  background-color: #f2f2f2;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form__grupo{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+input, select, button{
+  padding: 12px;
+  border: solid 1px #cecece;
+  border-radius: 8px;
+  outline: none;
+}
+.is-error{
+  color: #ff0202;
+}
+.none{
+  display: none;
+}
+button{
+  background-color: #383838;
+  color: #cecece;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 0.5s;
+}
+button:hover{
+  background-color: #cecece;
+  color: #383838;
+}
+
+.error{
+  border: solid 1px #ff0202;
+}
+.correcto{
+  border: solid 1px #04d24c;
+}

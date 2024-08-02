@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <form class="form" novalidate>
+    <div class="form__grupo">
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre" autocomplete="off" required>
+    </div>
+    <div class="form__grupo">
+      <label for="apellidos">Apellidos</label>
+      <input type="text" id="apellidos" autocomplete="off" required>
+    </div>
+    <label for="telefono">Teléfono</label>
+    <input type="text" id="telefono" autocomplete="off">
+    <label for="direccion">Dirección</label>
+    <input type="text" id="direccion" autocomplete="off" required>
+    <label for="tipo">Tipo Documento</label>
+    <select name="tipo" id="tipo" required>
+    </select>
+    <label for="documento">Documento</label>
+    <input type="text" id="documento" autocomplete="off" required>
+    <label for="email">Email</label>
+    <input type="text" id="email" autocomplete="off">
+    <div>
+      <input type="checkbox" id="politicas" required>
+      <label for="politicas">
+        Acepta las politicas de uso
+      </label>
+    </div>
+    <button type="submit">Enviar</button>
+  </form>
+  <script src="app.js" type="module"></script>
+</body>
+
+</html>
