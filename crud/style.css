@@ -1,39 +1,73 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
 }
 
-form{
-  max-width: 450px;
-  width: 450px;
+.container {
+  max-width: 1400px;
   margin: 0 auto;
+}
+
+.mt-40 {
+  margin-top: 40px;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+.bg-grey {
   background-color: #f2f2f2;
+}
+
+.sticky {
+  position: sticky;
+  top: 40px;
+}
+
+.layout {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 400px 1fr;
+  grid-template-areas: 'form table';
+  gap: 1rem;
+}
+
+form {
   padding: 30px;
   display: flex;
   flex-direction: column;
   gap: 14px;
+  border: solid .5px #c2c2c2;
+  border-radius: 10px;
 }
 
-.form__grupo{
+.form__grupo {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-input, select, button{
+input, select, button {
   padding: 12px;
   border: solid 1px #cecece;
   border-radius: 8px;
   outline: none;
 }
-.is-error{
+
+.is-error {
   color: #ff0202;
 }
-.none{
+
+.none {
   display: none;
 }
-button{
+
+.button {
   background-color: #383838;
   color: #cecece;
   cursor: pointer;
@@ -41,14 +75,66 @@ button{
   font-weight: 700;
   transition: all 0.5s;
 }
-button:hover{
+
+.button:hover {
   background-color: #cecece;
   color: #383838;
 }
 
-.error{
+.button--danger {
+  background-color: #e23939;
+  color: #fff;
+}
+
+.error {
   border: solid 1px #ff0202;
 }
-.correcto{
+
+.correcto {
   border: solid 1px #04d24c;
+}
+
+/* Tabla */
+table {
+  border-spacing: 0;
+}
+
+thead {
+  background-color: #383838;
+  color: #c2c2c2;
+}
+
+table th {
+  width: 25%;
+  padding: 0.3em;
+  height: 60px;
+}
+
+table td {
+  text-align: left;
+  border: 1px solid rgba(102, 101, 101, 0.423);
+  padding: 0.3em;
+  height: 60px;
+}
+
+tr {
+  transition: all 0.5s;
+}
+
+tbody tr:hover {
+  background-color: #383838;
+  color: #cecece;
+}
+
+th:first-child {
+  border-top-left-radius: 10px;
+}
+
+th:nth-last-child(1) {
+  border-top-right-radius: 10px;
+}
+
+.group{
+  display: flex;
+  gap: 4px;
 }
