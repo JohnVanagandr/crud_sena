@@ -61,9 +61,7 @@ const listar = async () => {
 
   data.forEach((element) => {
 
-    let documento = documentos.find((doc) => {
-      return doc.id === element.type_id;        
-    });    
+    let documento = documentos.find((doc) => doc.id === element.type_id);    
 
     $template.querySelector("tr").id = `user_${element.id}`;
     $template.querySelector(".first_name").textContent = element.first_name;
