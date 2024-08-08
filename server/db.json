@@ -1,5 +1,56 @@
 {
-  "users": [],
+  "users": [
+    {
+      "first_name": "john",
+      "last_name": "becerra",
+      "address": "Carrera 25 # 18-65, Edificio Kanise, Apto 802.",
+      "type_id": "0457",
+      "email": "jfbecerra@sena.edu.co",
+      "phone": "3160410637",
+      "docuement": "109860945",
+      "id": "b316"
+    },
+    {
+      "first_name": "john",
+      "last_name": "becerra",
+      "address": "Carrera 25 # 18-65, Edificio Kanise, Apto 802.",
+      "type_id": "0457",
+      "email": "jfbecerra@sena.edu.co",
+      "phone": "3160410637",
+      "docuement": "1098604945",
+      "id": "81b4"
+    },
+    {
+      "id": "79b1",
+      "first_name": "Lina Marcela",
+      "last_name": "Becaria Moreno",
+      "address": "Carrera 25 # 18-65, Edificio Kanise, Apto 802.",
+      "type_id": "0457",
+      "email": "dddd@dd.com",
+      "phone": "2414141",
+      "docuement": "421421"
+    },
+    {
+      "first_name": "Lina Marcela",
+      "last_name": "Becaria Moreno",
+      "address": "Carrera 25 # 18-65, Edificio Kanise, Apto 802.",
+      "type_id": "939d",
+      "email": "255252525@dd.com",
+      "phone": "32654785124",
+      "docuement": "1025471254",
+      "id": "e782"
+    },
+    {
+      "first_name": "LinaMarcela",
+      "last_name": "BecariaMoreno",
+      "address": "Carrera 25 # 18-65, Edificio Kanise, Apto 802.",
+      "type_id": "0457",
+      "email": "corre@corre.co",
+      "phone": "24242",
+      "docuement": "24242",
+      "id": "bd0d"
+    }
+  ],
   "documents": [
     {
       "id": "0457",

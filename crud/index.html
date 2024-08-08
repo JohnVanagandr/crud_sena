@@ -11,37 +11,11 @@
 
 <body>
 
-  <div class="container mt-40 mb-40 layout">
-    <div class="form">
-      <form class="sticky bg-grey" novalidate>
-        <div class="form__grupo">
-          <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" name="nombre" autocomplete="off" required>
-        </div>
-        <div class="form__grupo">
-          <label for="apellidos">Apellidos</label>
-          <input type="text" id="apellidos" autocomplete="off" required>
-        </div>
-        <label for="telefono">Teléfono</label>
-        <input type="text" id="telefono" autocomplete="off" required>
-        <label for="direccion">Dirección</label>
-        <input type="text" id="direccion" autocomplete="off" required>
-        <label for="tipo">Tipo Documento</label>
-        <select name="tipo" id="tipo" required>
-        </select>
-        <label for="documento">Documento</label>
-        <input type="text" id="documento" autocomplete="off" required>
-        <label for="email">Email</label>
-        <input type="text" id="email" autocomplete="off" required>
-        <div>
-          <input type="checkbox" id="politicas" required>
-          <label for="politicas">
-            Acepta las politicas de uso
-          </label>
-        </div>
-        <input type="hidden" id="user_id">
-        <button class="button" type="submit">Enviar</button>
-      </form>  
+  <div class="container mt-40 mb-40 layout">    
+    <div class="group">
+      <button class="button" id="add-modal">
+        <i class='bx bxs-plus-circle'></i>
+      </button>
     </div>
     <div class="table">
       <table id="table">
@@ -83,6 +57,53 @@
         </td>
       </tr>
     </template>
+
+    <!-- Modal -->
+
+    <section class="modal">
+      
+      <div class="modal__container">
+        <header class="modal__header">
+          <h2 class="modal__title">
+            Formulario
+          </h2>
+          <button class="button" id="close-modal">
+            <i class='bx bx-x'></i>
+          </button>
+        </header>
+        <div class="form">
+              <form class="" novalidate>
+                <div class="form__grupo">
+                  <label for="nombre">Nombre</label>
+                  <input type="text" id="nombre" name="nombre" autocomplete="off" required>
+                </div>
+                <div class="form__grupo">
+                  <label for="apellidos">Apellidos</label>
+                  <input type="text" id="apellidos" autocomplete="off" required>
+                </div>
+                <label for="telefono">Teléfono</label>
+                <input type="text" id="telefono" autocomplete="off" required>
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" autocomplete="off" required>
+                <label for="tipo">Tipo Documento</label>
+                <select name="tipo" id="tipo" required>
+                </select>
+                <label for="documento">Documento</label>
+                <input type="text" id="documento" autocomplete="off" required>
+                <label for="email">Email</label>
+                <input type="text" id="email" autocomplete="off" required>
+                <div>
+                  <input type="checkbox" id="politicas" required>
+                  <label for="politicas">
+                    Acepta las politicas de uso
+                  </label>
+                </div>
+                <input type="hidden" id="user_id">
+                <button class="button" type="submit" id="send">Enviar</button>
+              </form>  
+            </div>
+      </div>
+    </section>
 
   <script src="app.js" type="module"></script>
 </body>

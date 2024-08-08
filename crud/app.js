@@ -16,11 +16,15 @@ const documento = document.querySelector("#documento");
 const politicas = document.querySelector("#politicas");
 const correo = document.querySelector("#email");
 const button = document.querySelector("button");
+const send = document.querySelector("#send");
 const fragmento = document.createDocumentFragment();
 const table = document.querySelector("#table");
 const tbody = document.querySelector("#tbody");
 const $template = document.getElementById("users").content;
 const user = document.querySelector('#user_id');
+const addModal = document.querySelector("#add-modal");
+const modal = document.querySelector(".modal");
+const closeModal = document.querySelector("#close-modal");
 
 const cantidad = (elemento) => {
   let valor = elemento.value.length === 10;
@@ -33,35 +37,40 @@ const cantidad = (elemento) => {
   }
 }
 
-const documentos = () => {
+const documentos = async() => {
   const fragmento = document.createDocumentFragment();
   let option = document.createElement("option");
   option.value = "";
   option.textContent = "Seleccione...";
   fragmento.appendChild(option);
-  solicitud("documents")
-    .then((data) => {
-      data.forEach(element => {
-        let option = document.createElement("option");
-        option.value = element.id;
-        option.textContent = element.name;
-        fragmento.appendChild(option);
-      });
-      tipo.appendChild(fragmento);
-    });
+  const data = await solicitud("documents");
+
+  data.forEach(element => {
+    let option = document.createElement("option");
+    option.value = element.id;
+    option.textContent = element.name;
+    fragmento.appendChild(option);
+  });
+  tipo.appendChild(fragmento);
 }
 
 const listar = async () => {  
   
   const data = await solicitud('users');
+  const documentos = await solicitud("documents");
 
   data.forEach((element) => {
+
+    let documento = documentos.find((doc) => {
+      return doc.id === element.type_id;        
+    });    
+
     $template.querySelector("tr").id = `user_${element.id}`;
     $template.querySelector(".first_name").textContent = element.first_name;
     $template.querySelector(".last_name").textContent = element.last_name;
     $template.querySelector(".phone").textContent = element.phone;
     $template.querySelector(".address").textContent = element.address;
-    $template.querySelector(".type_id").textContent = element.type_id;
+    $template.querySelector(".type_id").textContent = documento.name;
     $template.querySelector(".docuement").textContent = element.docuement;
     $template.querySelector(".email").textContent = element.email;
 
@@ -101,7 +110,7 @@ const save = (event) => {
         }).then((data) => {
           createRow(data);
           resetForm();
-          alert(`Usuario creado con éxtio`);
+          toggleModal();
         });
     } else {
       // Actualizamos los datos
@@ -115,7 +124,7 @@ const save = (event) => {
       }).then((data) => {
         resetForm();
         editRow(data);
-        alert(`Usuario actualizado con éxtio`);
+        toggleModal();
       });
     }
   }
@@ -128,8 +137,8 @@ const edit = (event, element) => {
         "Content-type": "application/json; charset=UTF-8",
       },
     }).then((data) => {
-      // console.log(data);
-      loadForm(data)
+      loadForm(data);
+      toggleModal();
     });
 }
 
@@ -244,7 +253,7 @@ const resetForm = () => {
   documento.value = "";
   politicas.checked = false;
   
-  button.setAttribute("disabled", "");
+  send.setAttribute("disabled", "");
 }
 
 const loadForm = (data) => {
@@ -259,8 +268,12 @@ const loadForm = (data) => {
   documento.value = docuement;
   correo.value = email;
   politicas.checked = true;
-  button.removeAttribute("disabled");
+  send.removeAttribute("disabled");
   
+}
+
+const toggleModal = () => {
+  modal.classList.toggle("modal--show");
 }
 
 
@@ -268,7 +281,7 @@ addEventListener("DOMContentLoaded", (event) => {
   documentos();
   listar();
   if (!politicas.checked) {
-    button.setAttribute("disabled", "");
+    send.setAttribute("disabled", "");
   }
 });
 
@@ -287,7 +300,7 @@ document.addEventListener("click", (e) => {
 
 politicas.addEventListener("change", function (e) {
   if (e.target.checked) {
-    button.removeAttribute("disabled")
+    send.removeAttribute("disabled");
   }
 });
 
@@ -348,3 +361,7 @@ documento.addEventListener("keydown", function (event) {
 documento.addEventListener("keyup", function (event) {
   // console.log("keyup", event);
 });
+
+addModal.addEventListener("click", toggleModal);
+
+closeModal.addEventListener("click", toggleModal);
