@@ -155,7 +155,9 @@ const deleteData = (event, element) => {
   }
 };
 
-const createRow = (data) => {
+const createRow = async(data) => {
+
+  const documentos = await solicitud("documents");
 
   const tr = tbody.insertRow(-1);  
   const tdNombre = tr.insertCell(0);
@@ -178,7 +180,7 @@ const createRow = (data) => {
   tdNombre.textContent = data.first_name;
   tdApellido.textContent = data.last_name;
   tdDireccion.textContent = data.address;
-  tdTipo.textContent = data.type_id;
+  tdTipo.textContent = documentos.find((doc) => doc.id === data.type_id).name;
   tdEmail.textContent = data.email;
   tdTelefono.textContent = data.phone;
   tdDocumento.textContent = data.docuement;
@@ -209,7 +211,7 @@ const createRow = (data) => {
   tr.id = `user_${data.id}`; 
 }
 
-const editRow = (data) => {
+const editRow = async(data) => {
   const {
     id,
     first_name,
@@ -221,12 +223,16 @@ const editRow = (data) => {
     email,
   } = data;
 
+  const documentos = await solicitud("documents");
+
   const tr = document.querySelector(`#user_${id}`);  
   tr.querySelector(".first_name").textContent = first_name;  
   tr.querySelector(".last_name").textContent = last_name;
   tr.querySelector(".phone").textContent = phone;
   tr.querySelector(".address").textContent = address;
-  tr.querySelector(".type_id").textContent = type_id;
+  tr.querySelector(".type_id").textContent = documentos.find(
+    (doc) => doc.id === data.type_id
+  ).name;
   tr.querySelector(".docuement").textContent = docuement;
   tr.querySelector(".email").textContent = email;  
   

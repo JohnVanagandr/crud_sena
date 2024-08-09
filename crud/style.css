@@ -24,6 +24,18 @@ body {
   margin-bottom: 40px;
 }
 
+.d-flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.g-4 {
+  gap: 4px;
+}
+
 .bg-grey {
   background-color: #f2f2f2;
 }
@@ -148,9 +160,12 @@ th:nth-last-child(1) {
 
 .modal {
   position: fixed;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   background-color: rgba(34, 34, 34, 0.7);
-  display: flex;
+  overflow-x: hidden;
   overflow-y: auto;
   opacity: 0;
   pointer-events: none;
@@ -168,9 +183,11 @@ th:nth-last-child(1) {
 }
 
 .modal__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   background-color: #f2f2f2;
   width: 90%;
-  height: auto;
   max-width: 600px;
   margin: 2rem auto;
   border-radius: 6px;
