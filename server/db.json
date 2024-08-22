@@ -17,18 +17,18 @@
       "type_id": "0457",
       "email": "jfbecerra@sena.edu.co",
       "phone": "3160410637",
-      "docuement": "1098604945",
+      "docuement": "88888",
       "id": "81b4"
     },
     {
-      "id": "79b1",
       "first_name": "Lina Marcela",
       "last_name": "Becaria Moreno",
       "address": "Carrera 25 # 18-65, Edificio Kanise, Apto 802.",
       "type_id": "0457",
       "email": "dddd@dd.com",
-      "phone": "2414141",
-      "docuement": "421421"
+      "phone": "241414",
+      "docuement": "242425",
+      "id": "79b1"
     },
     {
       "first_name": "Lina Marcela",
@@ -45,10 +45,20 @@
       "last_name": "BecariaMoreno",
       "address": "Carrera 25 # 18-65, Edificio Kanise, Apto 802.",
       "type_id": "0457",
-      "email": "corre@corre.co",
+      "email": "mbecaria93@gmail.com",
       "phone": "24242",
       "docuement": "24242",
       "id": "bd0d"
+    },
+    {
+      "id": "5384",
+      "first_name": "john",
+      "last_name": "becerra",
+      "address": "Carrera 25 # 18-65, Edificio Kanise, Apto 802.",
+      "type_id": "0457",
+      "email": "jfbeccera@gmail.com",
+      "phone": "3160410637",
+      "docuement": "1098604945"
     }
   ],
   "documents": [
