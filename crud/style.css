@@ -49,14 +49,16 @@ body {
   display: grid;
   grid-template-rows: auto 1fr;
   grid-template-columns: 1fr;
-  grid-template-areas: 'group''table';
+  grid-template-areas: 'group''table''paginate';
   gap: 1rem;
 }
 
 .group {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
+  justify-self: end
+}
+
+.paginate {
+  justify-self: end
 }
 
 form {

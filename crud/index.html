@@ -33,6 +33,20 @@
         <tbody id="tbody"></tbody>
       </table>
     </div>
+    <nav class="paginate">
+      <button class="button first">
+        <i class='bx bx-chevrons-left'></i>
+      </button>
+      <button class="button prev">
+        <i class='bx bx-chevron-left'></i>
+      </button>
+      <button class="button next">
+        <i class='bx bx-chevron-right'></i>
+      </button>
+      <button class="button last">
+        <i class='bx bx-chevrons-right'></i>
+      </button>
+    </nav>
 
   </div>
 
@@ -80,7 +94,7 @@
                 </div>
                 <div class="form__grupo">
                   <label for="apellidos">Apellidos</label>
-                  <input type="text" id="apellidos" autocomplete="off" required>
+                  <input type="text" id="apellidos" name="last_name" autocomplete="off" required>
                 </div>
                 <label for="telefono">Teléfono</label>
                 <input type="text" id="telefono" autocomplete="off" required>
@@ -104,6 +118,7 @@
               </form> 
           </div>
       </div>
+
     </section>
 
   <script src="app.js" type="module"></script>

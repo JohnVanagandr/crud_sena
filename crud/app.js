@@ -54,10 +54,29 @@ const documentos = async() => {
   tipo.appendChild(fragmento);
 }
 
-const listar = async () => {  
-  
-  const data = await solicitud('users');
+const loadData = async (page) => {
+  let _page = page ? page : 1;  
+  const response = await solicitud(`users?_page=${_page}&_per_page=4`);
   const documentos = await solicitud("documents");
+  listar(response, documentos)
+}
+
+const listar = (response, documentos) => {    
+  const paginate = document.querySelector(".paginate");
+  let data = response.data;
+  let first = response.first;
+  let items = response.items;
+  let last = response.last;
+  let prev = response.prev;
+  let next = response.next;
+  let pages = response.pages;
+
+  paginate.querySelector(".first").disabled = prev ? false : true;  
+  paginate.querySelector(".prev").disabled =  prev ?  false: true;  
+  paginate.querySelector(".next").disabled = next ? false : true;     
+  paginate.querySelector(".last").disabled = next ? false : true;     
+
+  console.log(first, items, last, prev, next, pages);  
 
   data.forEach((element) => {
 
@@ -79,6 +98,12 @@ const listar = async () => {
     fragmento.appendChild(clone);
   }); 
   table.querySelector('tbody').appendChild(fragmento)
+
+  
+  paginate.querySelector(".first").setAttribute('data-first', first)
+  paginate.querySelector(".prev").setAttribute("data-prev", prev);
+  paginate.querySelector(".next").setAttribute("data-next", next);
+  paginate.querySelector(".last").setAttribute("data-last", last);  
 }
 
 const save = (event) => {
@@ -283,10 +308,10 @@ const toggleModal = () => {
 
 addEventListener("DOMContentLoaded", (event) => {
   documentos();
-  listar();
   if (!politicas.checked) {
     send.setAttribute("disabled", "");
   }
+  loadData();
 });
 
 // Delegación de eventos
@@ -300,7 +325,64 @@ document.addEventListener("click", (e) => {
     element = e.target.matches(".delete") ? e.target : e.target.parentNode;
     deleteData(e, element);
   }
+  // Paginador first
+  if (
+    e.target.matches(".paginate .first") ||
+    e.target.matches(".paginate .first *")
+  ) {
+    let first = e.target.matches(".paginate .first")
+      ? e.target.dataset.first
+      : e.target.parentNode.dataset.first;
+    const nodes = document.getElementById("table").querySelector("#tbody");
+    while (nodes.firstChild) {
+      nodes.removeChild(nodes.firstChild);
+    }
+    loadData(first);
+  }
+  // Paginador prev
+  if (
+    e.target.matches(".paginate .prev") ||
+    e.target.matches(".paginate .prev *")
+  ) {
+    let prev = e.target.matches(".paginate .prev")
+      ? e.target.dataset.prev
+      : e.target.parentNode.dataset.prev;
+    const nodes = document.getElementById("table").querySelector("#tbody");
+    while (nodes.firstChild) {
+      nodes.removeChild(nodes.firstChild);
+    }
+    loadData(prev);
+  }
+  // Paginador next
+  if (
+    e.target.matches(".paginate .next") ||
+    e.target.matches(".paginate .next *")
+  ) {
+    let next = e.target.matches(".paginate .prev")
+      ? e.target.dataset.next
+      : e.target.parentNode.dataset.next;    
+    const nodes = document.getElementById("table").querySelector("#tbody");
+    while (nodes.firstChild) {
+      nodes.removeChild(nodes.firstChild);
+    }
+    loadData(next);
+  }
+  // Paginador last
+  if (
+    e.target.matches(".paginate .last") ||
+    e.target.matches(".paginate .last *")
+  ) {
+    let last = e.target.matches(".paginate .last")
+      ? e.target.dataset.last
+      : e.target.parentNode.dataset.last;     
+    const nodes = document.getElementById("table").querySelector("#tbody");
+    while (nodes.firstChild) {
+      nodes.removeChild(nodes.firstChild);
+    }
+    loadData(last);
+  }
 });
+
 
 politicas.addEventListener("change", function (e) {
   if (e.target.checked) {
